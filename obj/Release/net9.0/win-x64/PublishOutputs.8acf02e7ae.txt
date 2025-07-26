@@ -1,0 +1,5 @@
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\publish\TupacAlumnos.exe
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\publish\TupacAlumnos.dll
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\publish\TupacAlumnos.deps.json
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\publish\TupacAlumnos.runtimeconfig.json
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\publish\TupacAlumnos.pdb

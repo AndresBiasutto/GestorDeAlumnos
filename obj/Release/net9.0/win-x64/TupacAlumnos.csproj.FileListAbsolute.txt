@@ -1,0 +1,14 @@
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\TupacAlumnos.exe
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\TupacAlumnos.deps.json
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\TupacAlumnos.runtimeconfig.json
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\TupacAlumnos.dll
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\bin\Release\net9.0\win-x64\TupacAlumnos.pdb
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Release\net9.0\win-x64\TupacAlumnos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Release\net9.0\win-x64\TupacAlumnos.AssemblyInfoInputs.cache
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Release\net9.0\win-x64\TupacAlumnos.AssemblyInfo.cs
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Release\net9.0\win-x64\TupacAlumnos.csproj.CoreCompileInputs.cache
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Release\net9.0\win-x64\TupacAlumnos.dll
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Release\net9.0\win-x64\refint\TupacAlumnos.dll
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Release\net9.0\win-x64\TupacAlumnos.pdb
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Release\net9.0\win-x64\TupacAlumnos.genruntimeconfig.cache
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Release\net9.0\win-x64\ref\TupacAlumnos.dll
