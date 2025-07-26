@@ -81,8 +81,7 @@ public class UIStudentGestor
                 }
                 Commons.Message(false, "Fecha inválida. Intente nuevamente con el formato dd/MM/yyyy.");
             }
-            Commons.Message(true, gestor.EnrollStudent(name, lastName, int.Parse(dNI), birthDate));
-            Console.WriteLine();
+            Commons.Alert(gestor.EnrollStudent(name, lastName, int.Parse(dNI), birthDate));
             Option = Commons.InputText("¿Querés agregar otro alumno? (S/N) ").ToLower();
         } while (Option != "n");
     }
@@ -128,7 +127,16 @@ public class UIStudentGestor
         Commons.TableEnd();
         string newName = Commons.InputText("Actualizar Nombre");
         string newLastName = Commons.InputText("Actualizar Apellido");
-        string newDni = Commons.InputText("Actualizar D.N.I");
+        string newDni;
+        while (true)
+        {
+            newDni = Commons.InputText("Actualizar DNI");
+            if (int.TryParse(newDni, out _))
+            {
+                break;
+            }
+            Commons.Message(false, "DNI inválido. Ingresá solo números.");
+        }
         DateTime newBirthDate;
         while (true)
         {
@@ -139,7 +147,7 @@ public class UIStudentGestor
             }
             Console.WriteLine("Fecha inválida. Intente nuevamente con el formato dd/MM/yyyy.");
         }
-        Commons.Message(true, gestor.UpdateStudent(unicNumber, newName, newLastName, int.Parse(newDni), newBirthDate));
+        Commons.Alert(gestor.UpdateStudent(unicNumber, newName, newLastName, int.Parse(newDni), newBirthDate));
         Commons.TableHeader("Matr.", "Nombre", "DNI", "Nacimiento");
         Commons.TableRow(student.GetUnicNumber(), student.GetFullName(), student.GetDNI(), student.GetBirthDate());
         Commons.TableEnd();

@@ -80,7 +80,7 @@ public class UICourseGestor
                 }
                 Commons.Message(false, "«« Fecha inválida. Intente nuevamente con el formato yyyy.");
             }
-            Commons.Message(true, gestor.CreateCourse(name, int.Parse(maxStudents), schoolYear));
+            Commons.Alert(gestor.CreateCourse(name, int.Parse(maxStudents), schoolYear));
             Option = Commons.InputText("¿Querés crear otro curso? (S/N) ").ToLower();
         } while (Option != "n");
     }
@@ -125,7 +125,16 @@ public class UICourseGestor
         Commons.TableRow(course.GetUnicNumber(), course.GetName(), course.GetMaxStudents(), course.GetSchoolYear());
         Commons.TableEnd();
         string newName = Commons.InputText("Actualizar Nombre");
-        string newMaxStudents = Commons.InputText("Actualizar Cupo máximo");
+        string newMaxStudents;
+        while (true)
+        {
+            newMaxStudents = Commons.InputText("Actualizar DNI");
+            if (int.TryParse(newMaxStudents, out _))
+            {
+                break;
+            }
+            Commons.Message(false, "DNI inválido. Ingresá solo números.");
+        }
         DateTime newSchoolYear;
         while (true)
         {
@@ -136,11 +145,11 @@ public class UICourseGestor
             }
             Commons.Message(false, "Año inválido. Intente nuevamente con el formato yyyy.");
         }
-        Commons.Message(true, gestor.UpdateCourse(unicNumber, newName, int.Parse(newMaxStudents), newSchoolYear));
+        Commons.Alert(gestor.UpdateCourse(unicNumber, newName, int.Parse(newMaxStudents), newSchoolYear));
         Commons.TableHeader("ID", "Materia", "Cupo", "Año lectivo");
         Commons.TableRow(course.GetUnicNumber(), course.GetName(), course.GetMaxStudents(), course.GetSchoolYear());
         Commons.TableEnd();
-        Console.ReadKey();
+        Commons.Message(true, "«« Presione cualquier tecla para volver");
     }
     public void FindCourse(GestorAcademico gestor, UICommons Commons)
     {

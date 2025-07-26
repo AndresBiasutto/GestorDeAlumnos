@@ -12,3 +12,4 @@ C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\
 C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Debug\net9.0\TupacAlumnos.pdb
 C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Debug\net9.0\TupacAlumnos.genruntimeconfig.cache
 C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Debug\net9.0\ref\TupacAlumnos.dll
+C:\Users\aquia\OneDrive\Escritorio\algoritmos\tp1 programacion\TupacAlumnos\obj\Debug\net9.0\TupacAlumnos.sourcelink.json

@@ -100,7 +100,7 @@ public class UIInscriptionGestor
                         Commons.Message(false, $"No se encontró ningún curso con la matrícula: {studentId}");
                         return;
                     }
-                    Commons.Message(true, gestor.EnrollStudentInCourse(selectedCourse, selectedStudent));
+                    Commons.Alert( gestor.EnrollStudentInCourse(selectedCourse, selectedStudent));
                     Console.WriteLine();
                     option = Commons.InputText("Deseas agregar otro alumno? (S/N)").ToLower();
                 } while (option != "n");
@@ -197,7 +197,7 @@ public class UIInscriptionGestor
         else
         {
             Commons.PlayConfirmation();
-            Commons.Header("Desinscribir alumno de curso");
+            Commons.Header("Desinscribir alumno de un curso");
             foreach (var course in courses)
             {
                 Commons.MenuOption($"{course.GetUnicNumber()}. {course.GetName()}");
@@ -231,7 +231,7 @@ public class UIInscriptionGestor
                         Commons.Message(false, $"No se encontró ningún curso con la matrícula: {studentId}");
                         return;
                     }
-                    Commons.Message(true, gestor.UnsubscribeStudentfromCourse(selectedCourse, selectedStudent));
+                    Commons.Alert( gestor.UnsubscribeStudentfromCourse(selectedCourse, selectedStudent));
                     option = Commons.InputText("Deseas desinscribir otro alumno? (S/N)").ToLower();
                 } while (option != "n");
 

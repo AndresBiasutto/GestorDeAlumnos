@@ -73,7 +73,7 @@ public class UICommons
         Console.WriteLine($"▒▒░░░▓▓▓░░▓▓░▓▓░▓▓░░░░▓▓░▓▓░▓▓░▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒");
         Console.WriteLine($"▒▒   ▓▓▓   ▓▓▓  ▓▓    ▓▓ ▓▓  ▓▓▓               {title.ToUpper(),50} ▒▒");
         Console.WriteLine($"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
-        // Console.WriteLine($"");
+        Console.WriteLine($"");
     }
     public void Menu1row2cols(string option1, string option2, string color1, string color2)
     {
@@ -89,6 +89,8 @@ public class UICommons
         Console.Write("╚══════════════════════════════════════════════╝  ");
         SwitchColor(color2);
         Console.WriteLine($"  ╚══════════════════════════════════════════════╝");
+        Console.WriteLine($"");
+
     }
     public void MenuOption(string option)
     {
@@ -154,6 +156,13 @@ public class UICommons
             PlayError();
         }
         Console.ReadKey();
+    }
+    public void Alert(string message)
+    {
+        Console.ForegroundColor = IsNightMode ? ConsoleColor.DarkCyan : ConsoleColor.DarkYellow;
+        Console.WriteLine($"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
+        Console.ForegroundColor = IsNightMode ? ConsoleColor.Magenta : ConsoleColor.DarkMagenta;
+        Console.WriteLine($"  {message.ToUpper(),-80}                 ");
     }
     public void PlayIntro()
     {
