@@ -47,8 +47,6 @@ namespace TupacAlumnos
                         break;
                 }
             } while (option != "s");
-
-
             Commons.Header("Instituto de formación Docente y Técnica");
             Commons.Message(true, "Gracias por usar el SISTEMA DE GESTIÓN ACADÉMICA TUPAC");
             Console.ResetColor();

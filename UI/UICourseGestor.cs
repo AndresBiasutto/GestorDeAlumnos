@@ -48,7 +48,6 @@ public class UICourseGestor
                     break;
                 default:
                     Commons.Message(false, "Opción no valida. Tocá cualquier tecla para continuar.");
-                    // Console.ResetColor();
                     break;
             }
         } while (Option != "v");
@@ -96,13 +95,7 @@ public class UICourseGestor
         {
             Commons.PlayConfirmation();
             Commons.Header("Todos los cursos");
-            Commons.TableHeader("ID", "Nombre", "Cupo", "Año lectivo");
-            foreach (var course in courses)
-            {
-                Commons.TableRow(course.GetUnicNumber(), course.GetName(), course.GetMaxStudents(), course.GetSchoolYear());
-            }
-            Commons.TableEnd();
-            Commons.Message(true, "«« Presione cualquier tecla para volver");
+            Commons.Table("ID", "Nombre", "Cupo", "Año lectivo", courses);
         }
     }
     public void DeleteCourse(GestorAcademico gestor, UICommons Commons)
@@ -176,7 +169,7 @@ public class UICourseGestor
         Commons.TableHeader("Matr.", "Nombre", "D.N.I", "F. De Nacimiento");
         for (int i = 0; i < courses.Count; i++)
         {
-            Commons.TableRow(courses[i].GetUnicNumber(), courses[i].GetFullName(), courses[i].GetDNI(), courses[i].GetBirthDate());
+            Commons.TableRow(courses[i].GetUnicNumber(), courses[i].GetFullName(), courses[i].GetDataNumber(), courses[i].GetDate());
 
         }
         Commons.TableEnd();

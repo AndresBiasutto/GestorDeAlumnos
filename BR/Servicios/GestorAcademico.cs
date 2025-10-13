@@ -13,11 +13,11 @@ public class GestorAcademico
     {
         Alumno newStudent = new Alumno(names, lastName, dNI, birthdate);
         Students.Add(newStudent);
-        return $"{newStudent.GetFullName()} fue agregado correctamente";
+        return $"{newStudent.GetName()} fue agregado correctamente";
     }
     public List<Alumno> GetAllStudents()
     {
-        List<Alumno> orderedStudents = Students.OrderBy(s => s.GetFullName()).ToList();
+        List<Alumno> orderedStudents = Students.OrderBy(s => s.GetName()).ToList();
         return orderedStudents;
     }
     public Alumno GetStudentByUnicNumber(string unicNumber)
@@ -35,7 +35,7 @@ public class GestorAcademico
 
         if (student != null)
         {
-            string studentName = student.GetFullName();
+            string studentName = student.GetName();
             Students.Remove(student);
             return $"{studentName} fue eliminado del sistema";
 
@@ -129,7 +129,7 @@ public class GestorAcademico
                 return $"{studentUnicNumber} ya esta inscripto";
             }
         }
-        if (int.Parse(course.GetMaxStudents()) <= course.GetEnrolledStudents().Count())
+        if (int.Parse(course.GetDataNumber()) <= course.GetEnrolledStudents().Count())
         {
             return $"cupo máximo superado para {course.GetName()}";
         }

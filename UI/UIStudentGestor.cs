@@ -97,13 +97,7 @@ public class UIStudentGestor
         {
             Commons.PlayConfirmation();
             Commons.Header("Alumnos inscriptos");
-            Commons.TableHeader("Matr.", "Nombre", "DNI", "Nacimiento");
-            foreach (var student in students)
-            {
-                Commons.TableRow(student.GetUnicNumber(), student.GetFullName().ToUpper(), student.GetDNI(), student.GetBirthDate());
-            }
-            Commons.TableEnd();
-            Commons.Message(true, "«« Presione cualquier tecla para volver");
+            Commons.Table("Matr.", "Nombre", "DNI", "Nacimiento", students);
         }
     }
     public void DeleteStudent(GestorAcademico gestor, UICommons Commons)
@@ -123,7 +117,7 @@ public class UIStudentGestor
             return;
         }
         Commons.TableHeader("Matr.", "Nombre", "DNI", "Nacimiento");
-        Commons.TableRow(student.GetUnicNumber(), student.GetFullName().ToUpper(), student.GetDNI().ToUpper(), student.GetBirthDate().ToUpper());
+        Commons.TableRow(student.GetUnicNumber(), student.GetName().ToUpper(), student.GetDataNumber(), student.GetDate().ToUpper());
         Commons.TableEnd();
         string newName = Commons.InputText("Actualizar Nombre");
         string newLastName = Commons.InputText("Actualizar Apellido");
@@ -149,7 +143,7 @@ public class UIStudentGestor
         }
         Commons.Alert(gestor.UpdateStudent(unicNumber, newName, newLastName, int.Parse(newDni), newBirthDate));
         Commons.TableHeader("Matr.", "Nombre", "DNI", "Nacimiento");
-        Commons.TableRow(student.GetUnicNumber(), student.GetFullName(), student.GetDNI(), student.GetBirthDate());
+        Commons.TableRow(student.GetUnicNumber(), student.GetName(), student.GetDataNumber(), student.GetDate());
         Commons.TableEnd();
         Commons.Message(true, "«« Presione cualquier tecla para volver");
 
@@ -166,20 +160,20 @@ public class UIStudentGestor
             return;
         }
         Commons.Header("Buscar Alumno");
-        Commons.MenuOption($"Cursos de {student.GetFullName()}");
+        Commons.MenuOption($"Cursos de {student.GetName()}");
         List<Course> courses = gestor.GetCoursesInStudent(student);
         if (courses.Count == 0)
         {
             Commons.Header("Buscar Alumno");
-            Commons.Message(false, $"{student.GetFullName()} sin cursos que mostrar");
+            Commons.Message(false, $"{student.GetName()} sin cursos que mostrar");
             return;
         }
         Commons.Header("Buscar Alumno");
-        Commons.MenuOption($"Cursos de  {student.GetFullName()}");
+        Commons.MenuOption($"Cursos de  {student.GetName()}");
         Commons.TableHeader("Id", "Nombre", "Año lectivo", "Cupo");
         for (int i = 0; i < courses.Count; i++)
         {
-            Commons.TableRow(courses[i].GetUnicNumber(), courses[i].GetName(), courses[i].GetSchoolYear(), courses[i].GetMaxStudents());
+            Commons.TableRow(courses[i].GetUnicNumber(), courses[i].GetName(), courses[i].GetSchoolYear(), courses[i].GetDataNumber());
 
         }
         Commons.TableEnd();

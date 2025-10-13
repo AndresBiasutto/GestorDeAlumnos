@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace tupacAlumnos;
@@ -6,14 +7,12 @@ namespace tupacAlumnos;
 public class UICommons
 {
     public bool IsNightMode = false;
-
     public bool Toggle()
     {
         IsNightMode = !IsNightMode;
         ApplyTheme();
         return IsNightMode;
     }
-
     public void ApplyTheme()
     {
         if (IsNightMode)
@@ -28,7 +27,6 @@ public class UICommons
         }
         Console.Clear(); // Asegura que se aplique en toda la pantalla
     }
-
     private void SwitchColor(string color)
     {
         switch (color)
@@ -116,6 +114,21 @@ public class UICommons
         Console.ForegroundColor = IsNightMode ? ConsoleColor.Yellow : ConsoleColor.DarkBlue;
         Console.WriteLine($"╚═══════╩══════════════════════════════════════════╩═════════════════════════╩═════════════════════╝");
     }
+    public void Table(string colTitle1, string colTitle2, string colTitle3, string colTitle4, IEnumerable<IEntity> users)
+    {
+        PlayConfirmation();
+        TableHeader(colTitle1, colTitle2, colTitle3, colTitle4);
+        foreach (var user in users)
+        {
+            TableRow(user.GetUnicNumber(), user.GetName().ToUpper(), user.GetDataNumber(), user.GetDate());
+        }
+        TableEnd();
+        Alert("«« Presione cualquier tecla para volver");
+    }
+    public void DataTable()
+    {
+        
+    }
     public void InputPlaceholder(string textInput)
     {
         Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -163,6 +176,7 @@ public class UICommons
         Console.WriteLine($"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
         Console.ForegroundColor = IsNightMode ? ConsoleColor.Magenta : ConsoleColor.DarkMagenta;
         Console.WriteLine($"  {message.ToUpper(),-80}                 ");
+        Console.ReadKey();
     }
     public void PlayIntro()
     {

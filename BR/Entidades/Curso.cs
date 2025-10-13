@@ -6,22 +6,14 @@ namespace TupacAlumnos;
 
 public class Course : Entity
 {
-    private string Name { get; set; }
     private int MaxStudents { get; set; }
     private DateTime SchoolYear { get; set; }
     private List<string> StudentsIds { get; set; }
     // private List<Alumno> EnrolledStudents { get; set; }
 
-    public Course(string name, int maxStudents, DateTime schoolYear)
+    public Course(string name, int dataNumber, DateTime date): base(name, dataNumber, date)
     {
-        Name = name;
-        MaxStudents = maxStudents;
-        SchoolYear = schoolYear;
         StudentsIds = new List<string>();
-    }
-    public string GetName()
-    {
-        return $"{Name}";
     }
     public string GetMaxStudents()
     {
