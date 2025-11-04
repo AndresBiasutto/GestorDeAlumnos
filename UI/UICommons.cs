@@ -114,6 +114,7 @@ public class UICommons
     {
         Console.ForegroundColor = IsNightMode ? ConsoleColor.Yellow : ConsoleColor.DarkBlue;
         Console.WriteLine($"╚═══════╩══════════════════════════════════════════╩═════════════════════════╩═════════════════════╝");
+        Alert("«« Presione cualquier tecla para volver");
     }
     public void Table(string colTitle1, string colTitle2, string colTitle3, string colTitle4, IEnumerable<IEntity> users)
     {
@@ -124,11 +125,11 @@ public class UICommons
             TableRow(user.GetUnicNumber(), user.GetName().ToUpper(), user.GetDataNumber(), user.GetDate());
         }
         TableEnd();
-        Alert("«« Presione cualquier tecla para volver");
+
     }
     public void DataTable()
     {
-        
+
     }
     public void InputPlaceholder(string textInput)
     {

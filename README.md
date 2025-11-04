@@ -13,6 +13,7 @@ Este proyecto fue desarrollado como parte del Trabajo Práctico de Programación
 - `UI/`: Interfaz de usuario (menú y entrada/salida por consola). 
 - `BR/Entidades/`: Clases que representan alumnos, cursos, etc. 
 - `BR/Servicios/`: Lógica de negocio. 
+- `BR/Interfaces/`: interfaces. 
  
 ## Instrucciones 
 1. Abrir la carpeta en Visual Studio Code. 

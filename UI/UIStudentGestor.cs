@@ -66,10 +66,8 @@ namespace tupacAlumnos
                     string lastName = Validations.ValidateNotEmpty(Commons.InputText("Apellido"), "Apellido");
                     int dni = Validations.ValidateInt(Commons.InputText("DNI"), "DNI");
                     Validations.ValidateIntRange(dni, 1000000, 99999999, "DNI");
-
                     DateTime birthDate = Validations.ValidateDate(Commons.InputText("Nacimiento (dd/MM/yyyy)"), "Nacimiento", "dd/MM/yyyy");
                     Validations.ValidateDateRange(birthDate, new DateTime(1940, 1, 1), DateTime.Today, "Nacimiento");
-
                     Commons.Alert(gestor.Create($"{name} {lastName}", dni, birthDate));
                 }
                 catch (Exception ex)
@@ -117,29 +115,23 @@ namespace tupacAlumnos
                     Commons.Message(false, $"No se encontró ningún alumno con la matrícula: {unicNumber}");
                     return;
                 }
-
                 Commons.TableHeader("Matr.", "Nombre", "DNI", "Nacimiento");
                 Commons.TableRow(student.GetUnicNumber(), student.GetName(), student.GetDataNumber(), student.GetDate());
                 Commons.TableEnd();
-
                 string newName = Validations.ValidateNotEmpty(Commons.InputText("Actualizar Nombre"), "Nombre");
                 string newLastName = Validations.ValidateNotEmpty(Commons.InputText("Actualizar Apellido"), "Apellido");
                 int newDni = Validations.ValidateInt(Commons.InputText("Actualizar DNI"), "DNI");
                 Validations.ValidateIntRange(newDni, 1000000, 99999999, "DNI");
-
                 DateTime newBirthDate = Validations.ValidateDate(Commons.InputText("Actualizar Nacimiento (dd/MM/yyyy)"), "Nacimiento", "dd/MM/yyyy");
                 Validations.ValidateDateRange(newBirthDate, new DateTime(1940, 1, 1), DateTime.Today, "Nacimiento");
-
                 Commons.Alert(gestor.Update(unicNumber, $"{newName} {newLastName}", newDni, newBirthDate));
             }
             catch (Exception ex)
             {
                 Commons.Message(false, ex.Message);
             }
-
             Commons.Message(true, "«« Presione cualquier tecla para volver");
         }
-
         public void FindStudent(StudentGestor gestor, UICommons Commons)
         {
             try
@@ -152,7 +144,6 @@ namespace tupacAlumnos
                     Commons.Message(false, $"El alumno con la matrícula {studentId} no existe");
                     return;
                 }
-
                 var courses = gestor.GetCoursesInStudent(student);
                 Commons.Header($"Cursos de {student.GetName()}");
                 if (!courses.Any())
