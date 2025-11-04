@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using tupacAlumnos;
 
-namespace TupacAlumnos;
+namespace TupacAlumnos.entity;
 
 public class Course : Entity
 {

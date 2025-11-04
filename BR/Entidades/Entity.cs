@@ -1,4 +1,5 @@
 using System;
+using tupacAlumnos.interfaces;
 
 namespace tupacAlumnos;
 

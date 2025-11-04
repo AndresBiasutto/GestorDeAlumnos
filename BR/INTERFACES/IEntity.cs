@@ -1,6 +1,6 @@
 using System;
 
-namespace tupacAlumnos;
+namespace tupacAlumnos.interfaces;
 
 public interface IEntity
 {

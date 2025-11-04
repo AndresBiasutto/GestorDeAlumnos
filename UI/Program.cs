@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using tupacAlumnos;
+using tupacAlumnos.academicGestor;
+using tupacAlumnos.DB;
+using tupacAlumnos.entity;
+using TupacAlumnos.entity;
 
 namespace TupacAlumnos
 {
@@ -9,7 +14,13 @@ namespace TupacAlumnos
         static void Main(string[] args)
         {
             string option;
-            GestorAcademico _gestor = new();
+            // GestorAcademico _gestor = new();
+            DataBase db = new DataBase();
+            List<Alumno> _Students=db.Students;
+            List<Course> _Courses=db.Courses;
+            StudentGestor studentGestor = new(_Students, _Courses);
+            CourseGestor courseGestor = new(_Students, _Courses);
+            InscriptionGestor inscriptionestor = new(_Students, _Courses);
             UIStudentGestor _uiStudentGestor = new();
             UICourseGestor _uiCoursetGestor = new();
             UIInscriptionGestor _uiInscriptionGestor = new();
@@ -29,13 +40,13 @@ namespace TupacAlumnos
                 switch (option)
                 {
                     case "1":
-                        _uiStudentGestor.MainMenu(_gestor, Commons);
+                        _uiStudentGestor.MainMenu(studentGestor, Commons);
                         break;
                     case "2":
-                        _uiCoursetGestor.MainMenu(_gestor, Commons);
+                        _uiCoursetGestor.MainMenu(courseGestor, Commons);
                         break;
                     case "3":
-                        _uiInscriptionGestor.MainMenu(_gestor, Commons);
+                        _uiInscriptionGestor.MainMenu(inscriptionestor, studentGestor, courseGestor, Commons);
                         break;
                     case "l":
                         Commons.Toggle();

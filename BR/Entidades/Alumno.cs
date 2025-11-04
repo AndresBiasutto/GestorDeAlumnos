@@ -1,27 +1,25 @@
 using System;
 using System.Collections.Generic;
 
-namespace tupacAlumnos;
+namespace tupacAlumnos.entity;
 
-public class Alumno : Entity, IEntity
+public class Alumno : Entity
 {
-    private string FirstName { get; set; }
     private List<string> EnrolledCoursesIds { get; set; }
-    public Alumno(string name, string firstName, int dataNumber, DateTime date) : base(name, dataNumber, date)
+    public Alumno(string name, int dataNumber, DateTime date) : base(name, dataNumber, date)
     {
-        FirstName = firstName;
         EnrolledCoursesIds = new List<string>();
     }
-    public string GetFullName()
+    // public string GetFullName()
+    // {
+    //     return $"{FirstName}, {Name}";
+    // }
+    public Alumno Update(string unicNumber, string newName, int newDataNumber, DateTime newDate)
     {
-        return $"{FirstName}, {Name}";
-    }
-    public Alumno Update(string updatedName, string updatedFirsName, int updatedDni, DateTime updatedBirthDate)
-    {
-        Name = updatedName;
-        FirstName = updatedFirsName;
-        DataNumber = updatedDni;
-        Date = updatedBirthDate;
+        Name = newName;
+        // FirstName = updatedFirsName;
+        DataNumber = newDataNumber;
+        Date = newDate;
         return this;
     }
     public string AddCourse(string courseId)
