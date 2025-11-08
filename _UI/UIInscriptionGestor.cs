@@ -12,8 +12,7 @@ namespace tupacAlumnos
     public class UIInscriptionGestor
     {
         private string Option { get; set; } = string.Empty;
-
-        public void MainMenu(InscriptionGestor gestor, StudentGestor studentGestor, CourseGestor courseGestor, UICommons Commons)
+        public void MainMenu(InscriptionGestor gestor, UICommons Commons)
         {
             do
             {
@@ -30,16 +29,16 @@ namespace tupacAlumnos
                 switch (Option)
                 {
                     case "1":
-                        SubscribeStudentInCourse(gestor, studentGestor, courseGestor, Commons);
+                        SubscribeStudentInCourse(gestor, Commons);
                         break;
                     case "2":
-                        UnsuscribeStudent(gestor, studentGestor, courseGestor, Commons);
+                        UnsuscribeStudent(gestor, Commons);
                         break;
                     case "3":
-                        ListStudentsInCourse(courseGestor, Commons);
+                        ListStudentsInCourse(gestor, Commons);
                         break;
                     case "4":
-                        ListCoursesInStudent(studentGestor, Commons);
+                        ListCoursesInStudent(gestor, Commons);
                         break;
                     case "l":
                         Commons.Toggle();
@@ -47,11 +46,11 @@ namespace tupacAlumnos
                 }
             } while (Option != "v");
         }
-
-        public void SubscribeStudentInCourse(InscriptionGestor gestor, StudentGestor studentGestor, CourseGestor courseGestor, UICommons Commons)
+        public void SubscribeStudentInCourse(InscriptionGestor gestor, UICommons Commons)
         {
-            var courses = courseGestor.GetAll();
-            var students = studentGestor.GetAll();
+            var courses = gestor.Courses.GetAll();
+            var students = gestor.Students.GetAll();
+            var Form = gestor.Forms;
 
             if (!courses.Any())
             {
@@ -66,12 +65,12 @@ namespace tupacAlumnos
 
             Commons.Header("Inscribir alumno a curso");
             foreach (var c in courses)
-                Commons.MenuOption($"{c.GetUnicNumber()}. {c.GetName()}");
+                Commons.MenuOption($"{c.GetId()}. {c.GetName()}");
 
             try
             {
                 string courseId = Validations.ValidateNotEmpty(Commons.InputText("Ingresar ID de curso"), "ID curso");
-                Course selectedCourse = courseGestor.GetById(courseId);
+                Course selectedCourse = gestor.Courses.FindById(courseId);
                 if (selectedCourse == null)
                 {
                     Commons.Message(false, $"No se encontró curso con ID: {courseId}");
@@ -85,11 +84,11 @@ namespace tupacAlumnos
                     Commons.Header($"Agregar alumnos a {selectedCourse.GetName()}");
                     Commons.TableHeader("Matr.", "Nombre", "", "");
                     foreach (var s in students)
-                        Commons.TableRow(s.GetUnicNumber(), s.GetName(), "", "");
+                        Commons.TableRow(s.GetId(), s.GetName(), "", "");
                     Commons.TableEnd();
 
                     string studentId = Validations.ValidateNotEmpty(Commons.InputText("Ingresar matrícula"), "Matrícula");
-                    Alumno selectedStudent = studentGestor.GetById(studentId);
+                    Alumno selectedStudent = gestor.Students.FindById(studentId);
                     if (selectedStudent == null)
                     {
                         Commons.Message(false, $"No se encontró alumno con matrícula: {studentId}");
@@ -97,7 +96,7 @@ namespace tupacAlumnos
                         return;
                     }
 
-                    Commons.Alert(gestor.EnrollStudentInCourse(selectedCourse, selectedStudent));
+                    Commons.Alert(gestor.EnrolStudentInCourse(selectedCourse, selectedStudent));
                     option = Commons.InputText("¿Deseas agregar otro alumno? (S/N)").ToLower();
                 } while (option != "n");
             }
@@ -107,11 +106,10 @@ namespace tupacAlumnos
                 Console.ReadKey();
             }
         }
-
-        public void UnsuscribeStudent(InscriptionGestor gestor, StudentGestor studentGestor, CourseGestor courseGestor, UICommons Commons)
+        public void UnsuscribeStudent(InscriptionGestor gestor, UICommons Commons)
         {
-            var courses = courseGestor.GetAll();
-            var students = studentGestor.GetAll();
+            var courses = gestor.Courses.GetAll();
+            var students = gestor.Students.GetAll();
 
             if (!courses.Any())
             {
@@ -126,12 +124,12 @@ namespace tupacAlumnos
 
             Commons.Header("Desinscribir alumno de curso");
             foreach (var c in courses)
-                Commons.MenuOption($"{c.GetUnicNumber()}. {c.GetName()}");
+                Commons.MenuOption($"{c.GetId()}. {c.GetName()}");
 
             try
             {
                 string courseId = Validations.ValidateNotEmpty(Commons.InputText("Ingresar ID de curso"), "ID curso");
-                Course selectedCourse = courseGestor.GetById(courseId);
+                Course selectedCourse = gestor.Courses.FindById(courseId);
                 if (selectedCourse == null)
                 {
                     Commons.Message(false, $"No se encontró curso con ID: {courseId}");
@@ -145,11 +143,11 @@ namespace tupacAlumnos
                     Commons.Header($"Desinscribir de {selectedCourse.GetName()}");
                     Commons.TableHeader("Matr.", "Nombre", "", "");
                     foreach (var s in students)
-                        Commons.TableRow(s.GetUnicNumber(), s.GetName(), "", "");
+                        Commons.TableRow(s.GetId(), s.GetName(), "", "");
                     Commons.TableEnd();
 
                     string studentId = Validations.ValidateNotEmpty(Commons.InputText("Ingresar matrícula"), "Matrícula");
-                    Alumno selectedStudent = studentGestor.GetById(studentId);
+                    Alumno selectedStudent = gestor.Students.FindById(studentId);
                     if (selectedStudent == null)
                     {
                         Commons.Message(false, $"No se encontró alumno con matrícula: {studentId}");
@@ -167,10 +165,9 @@ namespace tupacAlumnos
                 Console.ReadKey();
             }
         }
-
-        public void ListStudentsInCourse(CourseGestor courseGestor, UICommons Commons)
+        public void ListStudentsInCourse(InscriptionGestor courseGestor, UICommons Commons)
         {
-            var courses = courseGestor.GetAll();
+            var courses = courseGestor.Courses.GetAll();
             if (!courses.Any())
             {
                 Commons.Header("Listar alumnos inscirptos a cursos");
@@ -181,12 +178,12 @@ namespace tupacAlumnos
             Commons.PlayConfirmation();
             Commons.Header("Listar alumnos inscirptos a cursos");
             foreach (var course in courses)
-                Commons.MenuOption($"{course.GetUnicNumber()}. {course.GetName()}");
+                Commons.MenuOption($"{course.GetId()}. {course.GetName()}");
 
             try
             {
                 string courseId = Validations.ValidateNotEmpty(Commons.InputText("Ingresa el ID de un curso"), "ID curso");
-                Course selectedCourse = courseGestor.GetById(courseId);
+                Course selectedCourse = courseGestor.Courses.FindById(courseId);
                 if (selectedCourse == null)
                 {
                     Console.Clear();
@@ -199,9 +196,9 @@ namespace tupacAlumnos
                 Commons.Header("Listar alumnos inscirptos a cursos");
                 Commons.MenuOption($"Estudiantes inscriptos en {selectedCourse.GetName()}");
                 Commons.TableHeader("Matr.", "Nombre", "", "");
-                List<Alumno> enrolledStudents = courseGestor.GetEnrolledStudentsInCourse(selectedCourse);
+                List<Alumno> enrolledStudents = courseGestor.GetEnrolledStudentsInACourse(selectedCourse);
                 foreach (var student in enrolledStudents)
-                    Commons.TableRow(student.GetUnicNumber(), student.GetName(), "", "");
+                    Commons.TableRow(student.GetId(), student.GetName(), "", "");
                 Commons.TableEnd();
                 Commons.Message(true, "«« Presione cualquier tecla para volver");
                 Console.ReadKey();
@@ -212,10 +209,9 @@ namespace tupacAlumnos
                 Console.ReadKey();
             }
         }
-
-        public void ListCoursesInStudent(StudentGestor studentGestor, UICommons Commons)
+        public void ListCoursesInStudent(InscriptionGestor studentGestor, UICommons Commons)
         {
-            var students = studentGestor.GetAll();
+            var students = studentGestor.Students.GetAll();
             if (!students.Any())
             {
                 Commons.Header("Listar cursos de un alumno.");
@@ -227,12 +223,12 @@ namespace tupacAlumnos
             Commons.PlayConfirmation();
             Commons.Header("Listar cursos de un alumno.");
             foreach (var student in students)
-                Commons.MenuOption($"{student.GetUnicNumber()}. {student.GetName()}");
+                Commons.MenuOption($"{student.GetId()}. {student.GetName()}");
 
             try
             {
                 string studentId = Validations.ValidateNotEmpty(Commons.InputText("Ingresa el ID de un alumno"), "Matrícula");
-                Alumno selectedStudent = studentGestor.GetById(studentId);
+                Alumno selectedStudent = studentGestor.Students.FindById(studentId);
                 if (selectedStudent == null)
                 {
                     Commons.Header("Listar cursos de un alumno.");
@@ -244,9 +240,9 @@ namespace tupacAlumnos
                 Commons.Header("Listar cursos de un alumno.");
                 Commons.MenuOption($"Cursos de {selectedStudent.GetName()}");
                 Commons.TableHeader("ID", "Materia", "", "");
-                List<Course> enrolledCourses = studentGestor.GetCoursesInStudent(selectedStudent);
+                List<Course> enrolledCourses = studentGestor.GetCoursesOfAStudent(selectedStudent);
                 foreach (var course in enrolledCourses)
-                    Commons.TableRow(course.GetUnicNumber(), course.GetName(), "", "");
+                    Commons.TableRow(course.GetId(), course.GetName(), "", "");
                 Commons.TableEnd();
                 Commons.Message(true, "«« Presione cualquier tecla para volver");
                 Console.ReadKey();

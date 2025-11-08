@@ -1,4 +1,3 @@
-// File: utils/FormValidator.cs
 using System;
 using System.Globalization;
 
@@ -21,7 +20,6 @@ namespace tupacAlumnos.utils
                 throw new Exception($"Error en el campo '{fieldName}': {ex.Message}");
             }
         }
-
         public static DateTime ValidateDate(string input, string fieldName, string format)
         {
             try
@@ -37,7 +35,6 @@ namespace tupacAlumnos.utils
                 throw new Exception($"Error en el campo '{fieldName}': {ex.Message}");
             }
         }
-
         public static string ValidateNotEmpty(string input, string fieldName)
         {
             try
@@ -51,7 +48,6 @@ namespace tupacAlumnos.utils
                 throw new Exception($"Error en el campo '{fieldName}': {ex.Message}");
             }
         }
-
         public static int ValidateIntRange(int value, int min, int max, string fieldName)
         {
             try
@@ -65,7 +61,6 @@ namespace tupacAlumnos.utils
                 throw new Exception($"Error en el rango de '{fieldName}': {ex.Message}");
             }
         }
-
         public static DateTime ValidateDateRange(DateTime value, DateTime min, DateTime max, string fieldName)
         {
             try

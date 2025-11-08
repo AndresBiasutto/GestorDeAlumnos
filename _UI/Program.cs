@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using tupacAlumnos;
 using tupacAlumnos.academicGestor;
 using tupacAlumnos.DB;
-using tupacAlumnos.entity;
-using TupacAlumnos.entity;
 
 namespace TupacAlumnos
 {
@@ -14,16 +11,16 @@ namespace TupacAlumnos
         static void Main(string[] args)
         {
             string option;
-            // GestorAcademico _gestor = new();
-            DataBase db = new DataBase();
-            List<Alumno> _Students=db.Students;
-            List<Course> _Courses=db.Courses;
-            StudentGestor studentGestor = new(_Students, _Courses);
-            CourseGestor courseGestor = new(_Students, _Courses);
-            InscriptionGestor inscriptionestor = new(_Students, _Courses);
-            UIStudentGestor _uiStudentGestor = new();
-            UICourseGestor _uiCoursetGestor = new();
-            UIInscriptionGestor _uiInscriptionGestor = new();
+            DBForms _dbForms = new DBForms();
+            DBAlumno _dbAlumnos = new DBAlumno();
+            DBCourse _dbCourses = new DBCourse();
+            StudentGestor studentGestor = new(_dbAlumnos);
+            CourseGestor courseGestor = new(_dbCourses);
+            InscriptionGestor inscriptionGestor = new(_dbAlumnos, _dbCourses, _dbForms);
+            UIStudentGestor uiStudentGestor = new();
+            UICourseGestor uiCoursetGestor = new();
+            UIInscriptionGestor uiInscriptionGestor = new();
+
             Console.Clear();
             Console.WriteLine("Usar pantalla completa para una mejor experiencia");
             Console.ReadKey();
@@ -40,13 +37,13 @@ namespace TupacAlumnos
                 switch (option)
                 {
                     case "1":
-                        _uiStudentGestor.MainMenu(studentGestor, Commons);
+                        uiStudentGestor.MainMenu(studentGestor, Commons);
                         break;
                     case "2":
-                        _uiCoursetGestor.MainMenu(courseGestor, Commons);
+                        uiCoursetGestor.MainMenu(courseGestor, Commons);
                         break;
                     case "3":
-                        _uiInscriptionGestor.MainMenu(inscriptionestor, studentGestor, courseGestor, Commons);
+                        uiInscriptionGestor.MainMenu(inscriptionGestor, Commons);
                         break;
                     case "l":
                         Commons.Toggle();

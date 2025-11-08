@@ -5,21 +5,21 @@ namespace tupacAlumnos;
 
 public class Entity : IEntity
 {
-    protected static int lastUnicNumber = 0;
-    protected int UnicNumber { get; set; }
+    protected static int lastId = 0;
+    protected int Id { get; set; }
     protected string Name { get; set; }
     protected int DataNumber { get; set; }
     protected DateTime Date { get; set; }
     public Entity(string name, int dataNumber, DateTime date)
     {
-        UnicNumber = ++lastUnicNumber;
+        Id = ++lastId;
         Name = name;
         DataNumber = dataNumber;
         Date = date;
     }
-    public string GetUnicNumber()
+    public string GetId()
     {
-        return $"{UnicNumber.ToString()}";
+        return $"{Id.ToString()}";
     }
         public string GetName()
     {

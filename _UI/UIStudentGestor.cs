@@ -20,8 +20,7 @@ namespace tupacAlumnos
                 Commons.MenuOption("1 - Alta alumno.");
                 Commons.MenuOption("2 - Ver alumnos.");
                 Commons.MenuOption("3 - Baja alumno");
-                Commons.MenuOption("4 - Buscar alumno");
-                Commons.MenuOption("5 - Modificar alumno");
+                Commons.MenuOption("4 - Modificar alumno");
                 Commons.Menu1row2cols("L. Día / Noche", "V - volver", "blue", "green");
                 Commons.PlayConfirmation();
                 Option = Commons.InputText("Ingresa una opción").ToLower();
@@ -38,9 +37,6 @@ namespace tupacAlumnos
                         DeleteStudent(gestor, Commons);
                         break;
                     case "4":
-                        FindStudent(gestor, Commons);
-                        break;
-                    case "5":
                         UpdateStudent(gestor, Commons);
                         break;
                     case "l":
@@ -116,7 +112,7 @@ namespace tupacAlumnos
                     return;
                 }
                 Commons.TableHeader("Matr.", "Nombre", "DNI", "Nacimiento");
-                Commons.TableRow(student.GetUnicNumber(), student.GetName(), student.GetDataNumber(), student.GetDate());
+                Commons.TableRow(student.GetId(), student.GetName(), student.GetDataNumber(), student.GetDate());
                 Commons.TableEnd();
                 string newName = Validations.ValidateNotEmpty(Commons.InputText("Actualizar Nombre"), "Nombre");
                 string newLastName = Validations.ValidateNotEmpty(Commons.InputText("Actualizar Apellido"), "Apellido");
@@ -131,35 +127,6 @@ namespace tupacAlumnos
                 Commons.Message(false, ex.Message);
             }
             Commons.Message(true, "«« Presione cualquier tecla para volver");
-        }
-        public void FindStudent(StudentGestor gestor, UICommons Commons)
-        {
-            try
-            {
-                Commons.Header("Buscar Alumno");
-                string studentId = Validations.ValidateNotEmpty(Commons.InputText("Ingresar matrícula"), "Matrícula");
-                Alumno student = gestor.GetById(studentId);
-                if (student == null)
-                {
-                    Commons.Message(false, $"El alumno con la matrícula {studentId} no existe");
-                    return;
-                }
-                var courses = gestor.GetCoursesInStudent(student);
-                Commons.Header($"Cursos de {student.GetName()}");
-                if (!courses.Any())
-                    Commons.Message(false, $"{student.GetName()} sin cursos que mostrar");
-                else
-                {
-                    Commons.TableHeader("Id", "Nombre", "Año lectivo", "Cupo");
-                    foreach (var c in courses)
-                        Commons.TableRow(c.GetUnicNumber(), c.GetName(), c.GetSchoolYear(), c.GetDataNumber());
-                    Commons.TableEnd();
-                }
-            }
-            catch (Exception ex)
-            {
-                Commons.Message(false, ex.Message);
-            }
         }
     }
 }

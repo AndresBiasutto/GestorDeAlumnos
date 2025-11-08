@@ -122,7 +122,7 @@ public class UICommons
         TableHeader(colTitle1, colTitle2, colTitle3, colTitle4);
         foreach (var user in users)
         {
-            TableRow(user.GetUnicNumber(), user.GetName().ToUpper(), user.GetDataNumber(), user.GetDate());
+            TableRow(user.GetId(), user.GetName().ToUpper(), user.GetDataNumber(), user.GetDate());
         }
         TableEnd();
 
