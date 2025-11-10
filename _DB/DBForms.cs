@@ -3,29 +3,29 @@ using tupacAlumnos.entity;
 
 namespace tupacAlumnos.DB;
 
-public class DBForms : IDataBase<Form>
+public class DBForms : IDataBase<InscriptionForm>
 {
-    public List<Form> Forms { get; private set; }
+    public List<InscriptionForm> InscriptionForms { get; private set; }
     public DBForms()
     {
-        Forms = new List<Form>();
+        InscriptionForms = new List<InscriptionForm>();
     }
-    public void Save(Form form)
+    public void Save(InscriptionForm form)
     {
         try
         {
-            Forms.Add(form);
+            InscriptionForms.Add(form);
         }
         catch (System.Exception)
         {
             throw new System.Exception($"No se pudo guardar el formulario");
         }
     }
-    public List<Form> GetAll()
+    public List<InscriptionForm> GetAll()
     {
         try
         {
-            return Forms;
+            return InscriptionForms;
         }
         catch (System.Exception)
         {
@@ -33,11 +33,11 @@ public class DBForms : IDataBase<Form>
             throw new System.Exception($"Sin respuesta");
         }
     }
-    public Form FindById(string id)
+    public InscriptionForm FindById(string id)
     {
         try
         {
-           return Forms.Find(form => form.GetId() == id);
+           return InscriptionForms.Find(form => form.GetId() == id);
         }
         catch (System.Exception)
         {
@@ -48,7 +48,7 @@ public class DBForms : IDataBase<Form>
     {
         try
         {
-            Forms.Remove(FindById(id));
+            InscriptionForms.Remove(FindById(id));
         }
         catch (System.Exception)
         {
@@ -56,7 +56,7 @@ public class DBForms : IDataBase<Form>
             throw new System.Exception($"id:{id} sin respuesta");
         }
     }
-    public void Update(Form item)
+    public void Update(InscriptionForm item)
     {
         throw new System.NotImplementedException();
     }

@@ -20,11 +20,12 @@ namespace TupacAlumnos
             UIStudentGestor uiStudentGestor = new();
             UICourseGestor uiCoursetGestor = new();
             UIInscriptionGestor uiInscriptionGestor = new();
-
+            AutoEntityGenerator.CreateCourses(_dbCourses);
+            AutoEntityGenerator.CreateStudents(_dbAlumnos);
             Console.Clear();
             Console.WriteLine("Usar pantalla completa para una mejor experiencia");
             Console.ReadKey();
-            Commons.IntroScreen();
+            // Commons.IntroScreen();
             do
             {
                 Commons.ApplyTheme();

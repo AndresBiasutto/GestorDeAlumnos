@@ -28,7 +28,7 @@ public class UICommons
         }
         Console.Clear(); // Asegura que se aplique en toda la pantalla
     }
-    private void SwitchColor(string color)
+    private static void SwitchColor(string color)
     {
         switch (color)
         {
@@ -70,7 +70,11 @@ public class UICommons
         Console.WriteLine($"▒▒░░░▓▓▓░░▓▓░▓▓░▓▓░▓▓░▓▓░▓▓░▓▓░▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒");
         Console.WriteLine($"▒▒   ▓▓▓  ▓▓ ▓▓ ▓▓▓▓  ▓▓▓▓▓ ▓▓                 {hour.ToString("hh:mm"),50} ▒▒");
         Console.WriteLine($"▒▒░░░▓▓▓░░▓▓░▓▓░▓▓░░░░▓▓░▓▓░▓▓░▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒");
-        Console.WriteLine($"▒▒   ▓▓▓   ▓▓▓  ▓▓    ▓▓ ▓▓  ▓▓▓               {title.ToUpper(),50} ▒▒");
+        Console.WriteLine($"▒▒   ▓▓▓   ▓▓▓  ▓▓    ▓▓ ▓▓  ▓▓▓                                                                  ▒▒");
+        Console.WriteLine($"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
+        Console.ForegroundColor = IsNightMode ? ConsoleColor.White : ConsoleColor.Black;
+        Console.WriteLine($"     {title.ToUpper()}");
+        Console.ForegroundColor = IsNightMode ? ConsoleColor.DarkCyan : ConsoleColor.DarkYellow;
         Console.WriteLine($"▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒");
         Console.WriteLine($"");
     }
@@ -93,7 +97,7 @@ public class UICommons
     }
     public void MenuOption(string option)
     {
-        Console.ForegroundColor = IsNightMode ? ConsoleColor.Yellow : ConsoleColor.DarkBlue;
+        Console.ForegroundColor = IsNightMode ? ConsoleColor.Cyan : ConsoleColor.DarkBlue;
         Console.WriteLine($"╔══════════════════════════════════════════════════════════════════════════════════════════════════╗");
         Console.WriteLine($"║ {option.ToUpper(),-90}   »»  ║");
         Console.WriteLine($"╚══════════════════════════════════════════════════════════════════════════════════════════════════╝");
@@ -114,7 +118,6 @@ public class UICommons
     {
         Console.ForegroundColor = IsNightMode ? ConsoleColor.Yellow : ConsoleColor.DarkBlue;
         Console.WriteLine($"╚═══════╩══════════════════════════════════════════╩═════════════════════════╩═════════════════════╝");
-        Alert("«« Presione cualquier tecla para volver");
     }
     public void Table(string colTitle1, string colTitle2, string colTitle3, string colTitle4, IEnumerable<IEntity> users)
     {
@@ -125,7 +128,7 @@ public class UICommons
             TableRow(user.GetId(), user.GetName().ToUpper(), user.GetDataNumber(), user.GetDate());
         }
         TableEnd();
-
+        Alert("presione cualquier tecla para continuar");
     }
     public void DataTable()
     {
@@ -180,7 +183,7 @@ public class UICommons
         Console.WriteLine($"  {message.ToUpper(),-80}                 ");
         Console.ReadKey();
     }
-    public void PlayIntro()
+    public static void PlayIntro()
     {
         int[] notes = { 440, 440, 440, 349, 440, 440, 440, 349, 440, 440, 440, 349 };
         int duration = 200;
@@ -196,14 +199,14 @@ public class UICommons
         }
 
     }
-    public void PlayConfirmation()
+    public static void PlayConfirmation()
     {
         if (OperatingSystem.IsWindows())
         {
             Console.Beep(880, 150);
         }
     }
-    public void PlaySuccess()
+    public static void PlaySuccess()
     {
         int[] notes = { 523, 659, 783 }; // C5, E5, G5
         int duration = 150;
@@ -217,7 +220,7 @@ public class UICommons
         }
 
     }
-    public void PlayError()
+    public static void PlayError()
     {
         if (OperatingSystem.IsWindows())
         {
@@ -227,7 +230,7 @@ public class UICommons
 
 
     }
-    public void IntroScreen()
+    public static void IntroScreen()
     {
         Console.Clear();
         Console.BackgroundColor = ConsoleColor.White;

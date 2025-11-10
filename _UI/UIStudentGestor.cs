@@ -10,7 +10,6 @@ namespace tupacAlumnos
     public class UIStudentGestor
     {
         private string Option { get; set; } = string.Empty;
-
         public void MainMenu(StudentGestor gestor, UICommons Commons)
         {
             do
@@ -22,7 +21,7 @@ namespace tupacAlumnos
                 Commons.MenuOption("3 - Baja alumno");
                 Commons.MenuOption("4 - Modificar alumno");
                 Commons.Menu1row2cols("L. Día / Noche", "V - volver", "blue", "green");
-                Commons.PlayConfirmation();
+                UICommons.PlayConfirmation();
                 Option = Commons.InputText("Ingresa una opción").ToLower();
 
                 switch (Option)
@@ -50,7 +49,6 @@ namespace tupacAlumnos
                 }
             } while (Option != "v");
         }
-
         public void EnrollStudent(StudentGestor gestor, UICommons Commons)
         {
             do
@@ -74,7 +72,6 @@ namespace tupacAlumnos
                 Option = Commons.InputText("¿Querés agregar otro alumno? (S/N)").ToLower();
             } while (Option != "n");
         }
-
         public void ShowStudentList(StudentGestor gestor, UICommons Commons)
         {
             var students = gestor.GetAll();
@@ -84,7 +81,6 @@ namespace tupacAlumnos
             else
                 Commons.Table("Matr.", "Nombre", "DNI", "Nacimiento", students);
         }
-
         public void DeleteStudent(StudentGestor gestor, UICommons Commons)
         {
             try
@@ -98,7 +94,6 @@ namespace tupacAlumnos
                 Commons.Message(false, ex.Message);
             }
         }
-
         public void UpdateStudent(StudentGestor gestor, UICommons Commons)
         {
             Commons.Header("Modificar datos");

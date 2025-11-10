@@ -38,7 +38,7 @@ public class CourseGestor : IGestor<Course>
         }
         else
         {
-            return $"No hay ningun alumno con la matricula {id}";
+            return $"El identificador  \"{id}\" no existe en el sistema";
         }
     }
     public List<Course> GetAll()

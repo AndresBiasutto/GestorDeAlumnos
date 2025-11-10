@@ -15,7 +15,7 @@ namespace tupacAlumnos
             do
             {
                 Commons.ApplyTheme();
-                Commons.PlayConfirmation();
+                UICommons.PlayConfirmation();
                 Commons.Header("Gestor CURSOS");
                 Commons.MenuOption("1 - Alta curso.");
                 Commons.MenuOption("2 - Ver cursos.");
@@ -83,7 +83,7 @@ namespace tupacAlumnos
                 Commons.Message(false, "«« No hay cursos registrados.");
             else
             {
-                Commons.PlayConfirmation();
+                UICommons.PlayConfirmation();
                 Commons.Table("ID", "Nombre", "Cupo", "Año lectivo", courses);
             }
         }
