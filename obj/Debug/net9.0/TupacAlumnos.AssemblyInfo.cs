@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TupacAlumnos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5d32add5b435dcc4055dd29e040667218541434c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00e8409830fdea253dc5cc27dc3841b21abfa16c")]
 [assembly: System.Reflection.AssemblyProductAttribute("TupacAlumnos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TupacAlumnos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

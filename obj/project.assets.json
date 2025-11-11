@@ -1,8 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {},
-    "net9.0/win-x64": {}
+    "net9.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
@@ -15,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aquia\\OneDrive\\Escritorio\\algoritmos\\tp1 programacion\\TupacAlumnos\\TupacAlumnos.csproj",
+      "projectUniqueName": "C:\\Users\\aquia\\OneDrive\\Escritorio\\TupacAlumnos\\TupacAlumnos.csproj",
       "projectName": "TupacAlumnos",
-      "projectPath": "C:\\Users\\aquia\\OneDrive\\Escritorio\\algoritmos\\tp1 programacion\\TupacAlumnos\\TupacAlumnos.csproj",
+      "projectPath": "C:\\Users\\aquia\\OneDrive\\Escritorio\\TupacAlumnos\\TupacAlumnos.csproj",
       "packagesPath": "C:\\Users\\aquia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aquia\\OneDrive\\Escritorio\\algoritmos\\tp1 programacion\\TupacAlumnos\\obj\\",
+      "outputPath": "C:\\Users\\aquia\\OneDrive\\Escritorio\\TupacAlumnos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,31 +68,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[9.0.8, 9.0.8]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[9.0.8, 9.0.8]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[9.0.8, 9.0.8]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
-      }
-    },
-    "runtimes": {
-      "win-x64": {
-        "#import": []
       }
     }
   }
