@@ -21,7 +21,7 @@ public class Entity : IEntity
     {
         return $"{Id.ToString()}";
     }
-        public string GetName()
+    public string GetName()
     {
         return $"{Name}";
     }

@@ -25,7 +25,7 @@ namespace TupacAlumnos
             Console.Clear();
             Console.WriteLine("Usar pantalla completa para una mejor experiencia");
             Console.ReadKey();
-            // Commons.IntroScreen();
+            Commons.IntroScreen();
             do
             {
                 Commons.ApplyTheme();

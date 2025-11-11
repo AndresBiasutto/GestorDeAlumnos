@@ -45,6 +45,13 @@ namespace tupacAlumnos.academicGestor
             {
                 return $"{student.GetName()} ya está inscripto en {course.GetName()}";
             }
+            int capacity = int.Parse(course.GetDataNumber()); 
+            int enrolled = GetStudentsEnrolledInCourse(courseId).Count;
+
+            if (enrolled > capacity)
+            {
+                return "Cupo lleno. No se puede inscribir más estudiantes en este curso.";
+            }
             InscriptionForm newForm = new InscriptionForm(courseId, studentId, student, course, date);
             InscriptionForms.Save(newForm);
             return $"{student.GetName()} fue inscripto correctamente en {course.GetName()}";
@@ -54,7 +61,7 @@ namespace tupacAlumnos.academicGestor
             List<Alumno> students = InscriptionForms.GetAll()
                 .Where(f => f.GetCourseId() == id)
                 .Select(f => f.GetStudent())
-                .ToList();
+                .ToList().OrderBy(s => s.GetName()).ToList();
             return students;
         }
         public List<Course> GetCoursesOfAStudent(string id)
@@ -62,7 +69,7 @@ namespace tupacAlumnos.academicGestor
             List<Course> courses = InscriptionForms.GetAll()
                 .Where(f => f.GetStudentId() == id)
                 .Select(f => f.GetCourse())
-                .ToList();
+                .ToList().OrderBy(f => f.GetName()).ToList();
             return courses;
         }
         public string GetEnrollmentDate(string courseId, string studentId)

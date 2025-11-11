@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ZV4RP4X633w=",
+  "dgSpecHash": "vpzFuVEgZGw=",
   "success": true,
   "projectFilePath": "C:\\Users\\aquia\\OneDrive\\Escritorio\\algoritmos\\tp1 programacion\\TupacAlumnos\\TupacAlumnos.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\aquia\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\9.0.8\\microsoft.netcore.app.runtime.win-x64.9.0.8.nupkg.sha512",
+    "C:\\Users\\aquia\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\9.0.8\\microsoft.windowsdesktop.app.runtime.win-x64.9.0.8.nupkg.sha512",
+    "C:\\Users\\aquia\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.8\\microsoft.aspnetcore.app.runtime.win-x64.9.0.8.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -62,7 +62,7 @@ namespace tupacAlumnos
                     Validations.ValidateIntRange(dni, 1000000, 99999999, "DNI");
                     DateTime birthDate = Validations.ValidateDate(Commons.InputText("Nacimiento (dd/MM/yyyy)"), "Nacimiento", "dd/MM/yyyy");
                     Validations.ValidateDateRange(birthDate, new DateTime(1940, 1, 1), DateTime.Today, "Nacimiento");
-                    Commons.Alert(gestor.Create($"{name} {lastName}", dni, birthDate));
+                    Commons.Alert(gestor.Create($"{lastName} {name}", dni, birthDate));
                 }
                 catch (Exception ex)
                 {

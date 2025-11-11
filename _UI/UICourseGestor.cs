@@ -114,7 +114,7 @@ namespace tupacAlumnos
                 }
 
                 Commons.TableHeader("ID", "Materia", "Cupo", "Año lectivo");
-                Commons.TableRow(course.GetId(), course.GetName(), course.GetMaxStudents(), course.GetSchoolYear());
+                Commons.TableRow(course.GetId(), course.GetName(), course.GetDataNumber(), course.GetDate());
                 Commons.TableEnd();
 
                 string newName = Validations.ValidateNotEmpty(Commons.InputText("Actualizar Nombre"), "Nombre");

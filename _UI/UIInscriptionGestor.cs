@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using tupacAlumnos.academicGestor;
 using tupacAlumnos.entity;
 using tupacAlumnos.utils;
@@ -104,8 +105,8 @@ namespace tupacAlumnos
         }
         public void UnsuscribeStudent(InscriptionGestor gestor, UICommons Commons)
         {
-            var courses = gestor.GetAllCourses();
-            var students = gestor.GetAllStudents();
+            List<Course> courses = gestor.GetAllCourses().OrderBy(s => s.GetName()).ToList();
+            List<Alumno> students = gestor.GetAllStudents().OrderBy(s => s.GetName()).ToList();
 
             if (courses.Count == 0)
             {
@@ -160,27 +161,10 @@ namespace tupacAlumnos
                 Commons.Message(false, ex.Message);
                 Console.ReadKey();
             }
-        }
-        // public void ListEnrollments(InscriptionGestor gestor, UICommons Commons)
-        // {
-        //     var forms = gestor.GetAllForms();
-        //     if (forms.Count == 0)
-        //     {
-        //         Commons.Message(false, "«« No hay inscripciones registradas.");
-        //         return;
-        //     }
-
-        //     Commons.Header("Listado de inscripciones");
-        //     Commons.TableHeader("Curso", "Alumno", "Fecha de inscripción", "");
-        //     foreach (var f in forms)
-        //         Commons.TableRow(f.GetCourse().GetName(), f.GetStudent().GetName(), f.GetInscriptionDate().ToString("dd/MM/yyyy"), "");
-        //     Commons.TableEnd();
-        //     Commons.Message(true, "«« Presione cualquier tecla para volver");
-        //     Console.ReadKey();
-        // }
+        }        // {
         public void ListStudentsInCourse(InscriptionGestor gestor, UICommons Commons)
         {
-            List<Course> forms = gestor.GetAllCourses();
+            List<Course> forms = gestor.GetAllCourses().OrderBy(s => s.GetName()).ToList();;
             if (forms.Count == 0)
             {
                 Commons.Header("Listar alumnos inscirptos a cursos");
@@ -223,7 +207,7 @@ namespace tupacAlumnos
         }
         public void ListCoursesInStudent(InscriptionGestor gestor, UICommons Commons)
         {
-            var forms = gestor.GetAllStudents();
+            var forms = gestor.GetAllStudents().OrderBy(s => s.GetName()).ToList();;
             if (forms.Count == 0)
             {
                 Commons.Header("Listar cursos de un alumno.");

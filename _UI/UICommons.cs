@@ -230,7 +230,7 @@ public class UICommons
 
 
     }
-    public static void IntroScreen()
+    public void IntroScreen()
     {
         Console.Clear();
         Console.BackgroundColor = ConsoleColor.White;
